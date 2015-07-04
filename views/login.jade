@@ -1,0 +1,12 @@
+doctype html
+html
+    head
+        title Activate v0.1
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        h1 Welcome to Activate!
+        h2 Create user or sign in
+        form#formAddUser(name="login",method="post",action=route)
+            input#inputUserName(type="text", placeholder="username", name="username")
+            input#inputPassword(type="password", placeholder="password", name="password")
+            button#btnSubmit(type="submit") submit
