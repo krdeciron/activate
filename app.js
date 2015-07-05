@@ -30,6 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('bower_components'));
 app.use(session({
     genid: function(req) {
         return uuid.v4();

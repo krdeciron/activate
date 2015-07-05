@@ -1,12 +1,16 @@
 doctype html
 html
-    head
-        title Activate v0.1
-        link(rel='stylesheet', href='/stylesheets/style.css')
-    body
-        h1 Welcome to Activate!
-        h2 Create user or sign in
-        form#formAddUser(name="login",method="post",action=route)
-            input#inputUserName(type="text", placeholder="username", name="username")
-            input#inputPassword(type="password", placeholder="password", name="password")
-            button#btnSubmit(type="submit") submit
+	head
+		title Activate v0.1
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		script(href='/webcomponentsjs/webcomponents-lite.min.js')
+
+		link(rel='import', href='/paper-button/paper-button.html')
+		link(rel='import', href='/paper-input/paper-input.html')
+	body
+		h1 Welcome to Activate!
+		h2 Create user or sign in
+		form#formAddUser(name="login",method="post",action=route)
+			paper-input#inputUserName(type="text", placeholder="username", name="username")
+			paper-input#inputPassword(type="password", placeholder="password", name="password")
+			paper-button#btnSubmit(type="submit") submit
