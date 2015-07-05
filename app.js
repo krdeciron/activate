@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var uuid = require('node-uuid');
 var passport = require('./init/passportinit');
+var helmet = require('helmet');
 
 var routes = require('./routes/index');
 
@@ -18,6 +19,12 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
+var ONE_YEAR = 31536000000;
+app.use(helmet.hsts({
+    maxAge: ONE_YEAR,
+    includeSubdomains: true,
+    force: true
+}));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

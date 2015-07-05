@@ -31,7 +31,36 @@ httpServer.listen(port);
 httpServer.on('error', onError);
 httpServer.on('listening', onListening);
 
-var httpsServer = https.createServer(app);
+var fs = require('fs');
+
+var options = {
+  key: fs.readFileSync('keys/key.pem'),
+  cert: fs.readFileSync('keys/cert.pem'),
+  ciphers: 
+  [
+    "ECDHE-RSA-AES256-SHA384",
+    "DHE-RSA-AES256-SHA384",
+    "ECDHE-RSA-AES256-SHA256",
+    "DHE-RSA-AES256-SHA256",
+    "ECDHE-RSA-AES128-SHA256",
+    "DHE-RSA-AES128-SHA256",
+    "HIGH",
+    "!aNULL",
+    "!eNULL",
+    "!EXPORT",
+    "!DES",
+    "!RC4",
+    "!MD5",
+    "!PSK",
+    "!SRP",
+    "!CAMELLIA",
+    "!SHA1",
+    "!SHA"
+    ].join(':'),
+    honorCipherOrder: true
+};
+
+var httpsServer = https.createServer(options, app);
 httpsServer.listen('443');
 httpsServer.on('error', onError);
 httpsServer.on('listening', onListeningHttps);
