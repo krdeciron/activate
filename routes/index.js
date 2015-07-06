@@ -30,10 +30,12 @@ router.post('/newuser', function(req, res) {
     });
 });
 
-router.post('/login', 
+router.post('/login',
     passport.authenticate('local', { 
         successRedirect: '/',
-        failureRedirect: '/login' 
-}));
+        failureRedirect: '/login',
+        failureFlash: true 
+    })
+);
 
 module.exports = router;
