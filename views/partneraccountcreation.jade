@@ -1,0 +1,13 @@
+extends ./layout.jade
+
+block imports
+	link(rel='import', href='/iron-form/iron-form.html')
+	link(rel='import', href='/paper-button/paper-button.html')
+	link(rel='import', href='/paper-input/paper-input.html')
+
+	script(type='text/javascript' src='/controllers/partneraccountcreation.js')
+
+block contents
+	form#accountDetails(is='iron-form', name='account-details', method='post', action='/accountDetails', enctype="multipart/form-data")
+		paper-input(type='text', label='Some data', name='data')
+	paper=button(onclick="submitDetails()") Save

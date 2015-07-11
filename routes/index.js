@@ -9,11 +9,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res) {
-   res.render('login', { route: "/login" }); 
+   res.render('login'); 
 });
 
-router.get('/newuser', function(req, res) {
-   res.render('login', { route: "/newuser" }); 
+router.get('/accountDetails', function(req, res) {
+  res.render('partneraccountcreation');
 });
 
 router.post('/newuser', function(req, res) {
@@ -25,7 +25,7 @@ router.post('/newuser', function(req, res) {
        if (err) { return next(err); } 
        req.login(user, function(err) {
             if (err) { return next(err); }
-            return res.redirect('/');
+            return res.redirect('/accountDetails');
         });
     });
 });
@@ -37,5 +37,9 @@ router.post('/login',
         failureFlash: true 
     })
 );
+
+router.post('/accountDetails', function(req, res) {
+    res.redirect('/');
+});
 
 module.exports = router;
