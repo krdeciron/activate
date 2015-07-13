@@ -1,5 +1,8 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+block contents
+	h1= title
+	if (user)
+		p Welcome, #{user.username}!
+	else
+		p Welcome to Activate!

@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var uuid = require('node-uuid');
-var passport = require('./init/passportinit');
 var helmet = require('helmet');
 
 var routes = require('./routes/index');
@@ -31,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('bower_components'));
+app.use(express.static('controllers'));
 app.use(session({
     genid: function(req) {
         return uuid.v4();
@@ -40,8 +40,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+require('./init/passportinit').init(app);
 
 app.use(routes);
 

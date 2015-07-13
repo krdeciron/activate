@@ -10,7 +10,7 @@ block imports
 	link(rel='import', href='/paper-tabs/paper-tabs.html')
 	link(rel='import', href='/iron-pages/iron-pages.html')
 
-	script(type='text/javascript', src='/controllers/signin.js')
+	script(type='text/javascript', src='signin.js')
 
 block contents
 	h1 Welcome to Activate!
@@ -21,13 +21,13 @@ block contents
 				paper-tab Sign In
 			iron-pages(selected="{{selected}}")
 				div
-					form#formNewUser(is="iron-form", name="newuser", method="post", action="/newuser", enctype="multipart/form-data")
+					form#formNewUser(is="iron-form", name="newuser", method="post", action="/newuser", content-type="application/json")
 						paper-input#newUserName(type="text", label="username", name="username", floatingLabel)
 						paper-input#newPassword(type="password", label="password", name="password", floatingLabel)
 						paper-input#newPasswordVerify(type="password", placeholder="password", name="passwordVerify")
 					paper-button(onclick="submitForm()") Create
 				div
-					form#formLoginUser(is="iron-form", name="login", method="post", action="/login", enctype="multipart/form-data")
+					form#formLoginUser(is="iron-form", name="login", method="post", action="/login")
 						paper-input#loginUserName(style='font-family: "Merriweather"', type="text", label="username", name="username")
 						paper-input#loginPassword(type="password", placeholder="password", name="password")
 					paper-button(onclick="submitForm()") Login

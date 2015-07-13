@@ -19,7 +19,10 @@ userSchema.methods.validPassword = function(password) {
     return password === this.tempPasswd;
 };
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/test', {
+	user: 'admin',
+	pass: 'admin'
+});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
