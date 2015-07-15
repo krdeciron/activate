@@ -27,7 +27,7 @@ block contents
 						paper-input#newPasswordVerify(type="password", placeholder="password", name="passwordVerify")
 					paper-button(onclick="submitForm()") Create
 				div
-					form#formLoginUser(is="iron-form", name="login", method="post", action="/login")
+					form#formLoginUser(is="iron-form", name="login", method="post", action="/login", content-type="application/json")
 						paper-input#loginUserName(style='font-family: "Merriweather"', type="text", label="username", name="username")
 						paper-input#loginPassword(type="password", placeholder="password", name="password")
 					paper-button(onclick="submitForm()") Login

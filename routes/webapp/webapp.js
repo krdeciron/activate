@@ -4,7 +4,8 @@ getUserHomePage = function (req, res) {
 
 module.exports.init = function(router) {
 
-	router.get('/', function(req, res, next) {
+	router.get('/', function(req, res) {
+		console.log('serving index now');
 		res.render('index', { user: req.user });
 	});
 
@@ -18,7 +19,13 @@ module.exports.init = function(router) {
 
 	router.post('/newuser', getUserHomePage);
 
-	router.post('/login', getUserHomePage);
+	router.post('/login', function(req, res) {
+		var redirectUrl = '/';
+		if (!req.user) { 
+			redirectUrl = '/login';
+		}
+		res.json({ redirect: redirectUrl });
+	});
 	
 	router.post('/accountDetails', getUserHomePage);
 

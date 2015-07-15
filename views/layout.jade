@@ -1,8 +1,14 @@
 doctype html
 html
-  head
-    title Activate
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    block imports
-  body
-    block contents
+	head
+		title Activate
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='import', href='/paper-scroll-header-toolbar/paper-scroll-header-toolbar.html')
+		link(rel='import', href='/paper-toolbar/paper-toolbar.html')
+		block imports
+	body
+		paper-scroll-header-toolbar
+			paper-toolbar
+				div(class='title', style="font-family:Merriweather") Activate
+			div(style="margin-left:8px; margin-right:8px; font-family:Merriweather;")
+				block contents

@@ -15,6 +15,10 @@ submitForm = function() {
 	}
 	else
 	{
-		document.getElementById('formLoginUser').submit();
+		var form = document.getElementById('formLoginUser');
+		form.addEventListener('iron-form-response', function(e) {
+			window.location = e.detail.redirect;
+		});
+		form.submit();
 	}
 };
